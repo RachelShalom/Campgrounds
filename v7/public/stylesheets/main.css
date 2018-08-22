@@ -1,0 +1,12 @@
+.thumbnail>img {
+     width: 100%;
+     height: 300px;
+}
+
+.thumbnail {
+     padding: 0px;
+}
+
+.deleteForm {
+     display: inline;
+}
