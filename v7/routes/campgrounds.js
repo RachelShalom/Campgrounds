@@ -29,7 +29,8 @@ router.post("/campgrounds", middlewareObj.isLoggedIn, function(req, res) {
     var name = req.body.name;
     var image = req.body.image;
     var desc = req.body.description;
-    var newCamp = { name: name, image: image, description: desc, author: { id: req.user._id, username: req.user.username } };
+    var price = req.body.price
+    var newCamp = { name: name, image: image, description: desc, price: price, author: { id: req.user._id, username: req.user.username } };
     //here we create and save the new recieved camp from the user
     Camp.create(newCamp, function(err, camp) {
         if (err) {
@@ -68,7 +69,7 @@ router.get("/campgrounds/:id/edit", middlewareObj.checkCampOwnership, function(r
     });
 });
 
-//DPDATE: //Update a particular camp and then redirect somwhere 
+//UPDATE: //Update a particular camp and then redirect somwhere 
 router.put("/campGrounds/:id", middlewareObj.checkCampOwnership, function(req, res) {
     Camp.findByIdAndUpdate(req.params.id, req.body.updatedCamp, function(err, camp) {
         if (err) {
