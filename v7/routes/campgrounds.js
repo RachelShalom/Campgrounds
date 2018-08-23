@@ -4,9 +4,9 @@ var express = require('express'),
     middlewareObj = require("../middleware/index.js");
 
 router.get("/", function(req, res) {
-    res.redirect("/campgrounds");
+    res.render("../views/landing");
 });
-//INDEX ROUTE
+//INDEX ROUTE....
 router.get("/campgrounds", function(req, res) {
     Camp.find({}, function(err, allCamps) {
         //this is where we retrieve all camps from the database and send that data to be rendered
@@ -20,7 +20,7 @@ router.get("/campgrounds", function(req, res) {
     })
 
 });
-// NEW: display a form to create a new camp
+// NEW form to add a new camp: display a form to create a new camp
 router.get("/campgrounds/new", middlewareObj.isLoggedIn, function(req, res) {
     res.render("camps/newCamp");
 });
